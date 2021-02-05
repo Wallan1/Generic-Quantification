@@ -1,0 +1,28 @@
+---
+title: "10-Load-Data"
+output: html_notebook
+---
+
+Load data file
+*written for windows PC*
+```{r}
+data=read.csv(file="C:/Users/Natalie Wallace/Documents/Vanderbilt/JG_ITC-data.csv", header=TRUE)
+```
+
+
+Calculating means and Standard deviation
+```{r}
+
+data$AveKd<-NA
+data$AveN<-NA
+data$SDKd<-NA
+data$SDN<-NA
+
+data$AveKd<-mean(data$Kd)
+data$AveN<-mean(data$n)
+
+data$SDKd<-sd(data$Kd)
+data$SDN<-sd(data$n)
+
+```
+
