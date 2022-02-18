@@ -6,7 +6,7 @@ output: html_notebook
 Load data file
 *written for windows PC*
 ```{r}
-data=read.csv(file="C:/Users/Natalie Wallace/Documents/Vanderbilt/JG_ITC-data.csv", header=TRUE)
+data=read.csv(file="C:/Users/natal/Documents/Vanderbilt/JG_ITC-data.csv", header=TRUE)
 ```
 
 
