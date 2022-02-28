@@ -3,6 +3,7 @@ title: "10-Load-Data"
 output: html_notebook
 ---
 
+
 Load data file
 *written for windows PC*
 ```{r}
@@ -26,3 +27,18 @@ data$SDN<-sd(data$n)
 
 ```
 
+Calculating means and Standard deviation
+```{r}
+
+data$AveATG9<-NA
+data$AveN<-NA
+data$SDKd<-NA
+data$SDN<-NA
+
+data$AveKd<-mean(data$Kd)
+data$AveN<-mean(data$n)
+
+data$SDKd<-sd(data$Kd)
+data$SDN<-sd(data$n)
+
+```
