@@ -217,24 +217,40 @@ pre code {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuV0JkYXRhJHJlcGxpY2F0ZTwtYXMuZmFjdG9yKFdCZGF0YSRyZXBsaWNhdGUpXG5cbmFub3ZhTEMzcmF0aW9Ob3JtPC1hb3YoV0JkYXRhJExDM3JhdGlvTm9ybX5XQmRhdGEkdHlwZSpXQmRhdGEkQnZzUytXQmRhdGEkcmVwbGljYXRlK1dCZGF0YSRyZXBsaWNhdGU6V0JkYXRhJHR5cGUpXG5zdW1tYXJ5KGFub3ZhTEMzcmF0aW9Ob3JtKVxuVHVrZXlIU0QoYW5vdmFMQzNyYXRpb05vcm0pXG5cbmFub3ZhdGVwc2luS0Q8LWFvdihXQmRhdGEkdGVwc2luS0R+V0JkYXRhJHR5cGUqV0JkYXRhJEJ2c1MrV0JkYXRhJHJlcGxpY2F0ZStXQmRhdGEkcmVwbGljYXRlOldCZGF0YSR0eXBlKVxuc3VtbWFyeShhbm92YXRlcHNpbktEKVxuVHVrZXlIU0QoYW5vdmF0ZXBzaW5LRClcblxuYW5vdmFBUDRFS0Q8LWFvdihXQmRhdGEkQVA0RUtEfldCZGF0YSR0eXBlKldCZGF0YSRCdnNTK1dCZGF0YSRyZXBsaWNhdGUrV0JkYXRhJHJlcGxpY2F0ZTpXQmRhdGEkdHlwZSlcbnN1bW1hcnkoYW5vdmFBUDRFS0QpXG5UdWtleUhTRChhbm92YUFQNEVLRClcbmBgYCJ9 -->
-<pre class="r"><code>WBdata$replicate&lt;-as.factor(WBdata$replicate)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YSRSZXA8LWFzLmZhY3RvcihkYXRhJFJlcClcblxuYW5vdmFBVEc5QTwtYW92KGRhdGEkcmVsV1RBVEc5QX5kYXRhJFR5cGUpXG5zdW1tYXJ5KGFub3ZhQVRHOUEpXG5gYGAifQ== -->
+<pre class="r"><code>data$Rep&lt;-as.factor(data$Rep)
 
-anovaLC3ratioNorm&lt;-aov(WBdata$LC3ratioNorm~WBdata$type*WBdata$BvsS+WBdata$replicate+WBdata$replicate:WBdata$type)
-summary(anovaLC3ratioNorm)
-TukeyHSD(anovaLC3ratioNorm)
-
-anovatepsinKD&lt;-aov(WBdata$tepsinKD~WBdata$type*WBdata$BvsS+WBdata$replicate+WBdata$replicate:WBdata$type)
-summary(anovatepsinKD)
-TukeyHSD(anovatepsinKD)
-
-anovaAP4EKD&lt;-aov(WBdata$AP4EKD~WBdata$type*WBdata$BvsS+WBdata$replicate+WBdata$replicate:WBdata$type)
-summary(anovaAP4EKD)
-TukeyHSD(anovaAP4EKD)</code></pre>
+anovaATG9A&lt;-aov(data$relWTATG9A~data$Type)
+summary(anovaATG9A)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgRGYgU3VtIFNxIE1lYW4gU3EgRiB2YWx1ZSBQcig+RikgIFxuZGF0YSRUeXBlICAgIDMgMC44MTA1IDAuMjcwMTUgICA3LjE3OCAwLjAxMTcgKlxuUmVzaWR1YWxzICAgIDggMC4zMDExIDAuMDM3NjQgICAgICAgICAgICAgICAgIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG4ifQ== -->
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)  
+data$Type    3 0.8105 0.27015   7.178 0.0117 *
+Residuals    8 0.3011 0.03764                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuVHVrZXlIU0QoYW5vdmFBVEc5QSlcbmBgYCJ9 -->
+<pre class="r"><code>TukeyHSD(anovaATG9A)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICBUdWtleSBtdWx0aXBsZSBjb21wYXJpc29ucyBvZiBtZWFuc1xuICAgIDk1JSBmYW1pbHktd2lzZSBjb25maWRlbmNlIGxldmVsXG5cbkZpdDogYW92KGZvcm11bGEgPSBkYXRhJHJlbFdUQVRHOUEgfiBkYXRhJFR5cGUpXG5cbiRgZGF0YSRUeXBlYFxuICAgICAgICAgICAgICAgICAgICAgZGlmZiAgICAgICAgIGx3ciAgICAgICAgdXByICAgICBwIGFkalxuQ29udHJvbC1XVCAgICAgIDAuMDg3Njk5NCAtMC40MTk1NzA4OCAwLjU5NDk2OTY5IDAuOTQyOTUzMlxudGVwc2luLVdUICAgICAgIDAuNjczNDgwNCAgMC4xNjYyMTAwOCAxLjE4MDc1MDY1IDAuMDExOTI3MVxuQVA0RTEtV1QgICAgICAgIDAuMjAxODYyMiAtMC4zMDU0MDgxMCAwLjcwOTEzMjQ3IDAuNjAyMDIwOVxudGVwc2luLUNvbnRyb2wgIDAuNTg1NzgxMCAgMC4wNzg1MTA2NyAxLjA5MzA1MTI0IDAuMDI1MDg3OVxuQVA0RTEtQ29udHJvbCAgIDAuMTE0MTYyOCAtMC4zOTMxMDc1MCAwLjYyMTQzMzA3IDAuODg2MTc5OVxuQVA0RTEtdGVwc2luICAgLTAuNDcxNjE4MiAtMC45Nzg4ODg0NiAwLjAzNTY1MjExIDAuMDY4NjgzNFxuIn0= -->
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = data$relWTATG9A ~ data$Type)
+
+$`data$Type`
+                     diff         lwr        upr     p adj
+Control-WT      0.0876994 -0.41957088 0.59496969 0.9429532
+tepsin-WT       0.6734804  0.16621008 1.18075065 0.0119271
+AP4E1-WT        0.2018622 -0.30540810 0.70913247 0.6020209
+tepsin-Control  0.5857810  0.07851067 1.09305124 0.0250879
+AP4E1-Control   0.1141628 -0.39310750 0.62143307 0.8861799
+AP4E1-tepsin   -0.4716182 -0.97888846 0.03565211 0.0686834</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIjMxLVdCLXN0YXRpc3RpY2FsLWFuYWx5c2lzIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KDQpgYGB7cn0NCldCZGF0YSRyZXBsaWNhdGU8LWFzLmZhY3RvcihXQmRhdGEkcmVwbGljYXRlKQ0KDQphbm92YUxDM3JhdGlvTm9ybTwtYW92KFdCZGF0YSRMQzNyYXRpb05vcm1+V0JkYXRhJHR5cGUqV0JkYXRhJEJ2c1MrV0JkYXRhJHJlcGxpY2F0ZStXQmRhdGEkcmVwbGljYXRlOldCZGF0YSR0eXBlKQ0Kc3VtbWFyeShhbm92YUxDM3JhdGlvTm9ybSkNClR1a2V5SFNEKGFub3ZhTEMzcmF0aW9Ob3JtKQ0KDQphbm92YXRlcHNpbktEPC1hb3YoV0JkYXRhJHRlcHNpbktEfldCZGF0YSR0eXBlKldCZGF0YSRCdnNTK1dCZGF0YSRyZXBsaWNhdGUrV0JkYXRhJHJlcGxpY2F0ZTpXQmRhdGEkdHlwZSkNCnN1bW1hcnkoYW5vdmF0ZXBzaW5LRCkNClR1a2V5SFNEKGFub3ZhdGVwc2luS0QpDQoNCmFub3ZhQVA0RUtEPC1hb3YoV0JkYXRhJEFQNEVLRH5XQmRhdGEkdHlwZSpXQmRhdGEkQnZzUytXQmRhdGEkcmVwbGljYXRlK1dCZGF0YSRyZXBsaWNhdGU6V0JkYXRhJHR5cGUpDQpzdW1tYXJ5KGFub3ZhQVA0RUtEKQ0KVHVrZXlIU0QoYW5vdmFBUDRFS0QpDQpgYGA=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIjMxLVdCLXN0YXRpc3RpY2FsLWFuYWx5c2lzIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KDQpgYGB7cn0NCmRhdGEkUmVwPC1hcy5mYWN0b3IoZGF0YSRSZXApDQoNCmFub3ZhQVRHOUE8LWFvdihkYXRhJHJlbFdUQVRHOUF+ZGF0YSRUeXBlKQ0Kc3VtbWFyeShhbm92YUFURzlBKQ0KVHVrZXlIU0QoYW5vdmFBVEc5QSkNCg0KYGBg</div>
 
 
 

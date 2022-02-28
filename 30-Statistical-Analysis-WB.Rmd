@@ -5,17 +5,10 @@ output: html_notebook
 
 
 ```{r}
-WBdata$replicate<-as.factor(WBdata$replicate)
+data$Rep<-as.factor(data$Rep)
 
-anovaLC3ratioNorm<-aov(WBdata$LC3ratioNorm~WBdata$type*WBdata$BvsS+WBdata$replicate+WBdata$replicate:WBdata$type)
-summary(anovaLC3ratioNorm)
-TukeyHSD(anovaLC3ratioNorm)
+anovaATG9A<-aov(data$relWTATG9A~data$Type)
+summary(anovaATG9A)
+TukeyHSD(anovaATG9A)
 
-anovatepsinKD<-aov(WBdata$tepsinKD~WBdata$type*WBdata$BvsS+WBdata$replicate+WBdata$replicate:WBdata$type)
-summary(anovatepsinKD)
-TukeyHSD(anovatepsinKD)
-
-anovaAP4EKD<-aov(WBdata$AP4EKD~WBdata$type*WBdata$BvsS+WBdata$replicate+WBdata$replicate:WBdata$type)
-summary(anovaAP4EKD)
-TukeyHSD(anovaAP4EKD)
 ```

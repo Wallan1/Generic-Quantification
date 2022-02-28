@@ -15,21 +15,21 @@ data_nodup$Type<-factor(data_nodup$Type, levels=c("WT", "Control", "tepsin", "AP
 
 plotme<-function(yaxis,sd,labelme,mytitle){
    ggplot(WBdata_nodup,aes(x=Type,y=yaxis,fill=Type)) + 
-      geom_bar( width=.7, position = position_dodge(0.9),alpha=.65, stat = "identity", color = "black") + 
-        geom_errorbar(aes(x=Type,ymin=yaxis-sd,ymax=yaxis+sd),width=0.4,position = position_dodge(0.9),alpha=.9, colour="black", size=0.8)+
+      geom_bar( width=.7, position = position_dodge(0.9),alpha=.6, stat = "identity", color = "black") + 
+        geom_errorbar(aes(x=Type,ymin=yaxis-sd,ymax=yaxis+sd),width=0.4,position = position_dodge(0.9),alpha=.9, colour="black", size=0.5)+
       #geom_dotplot(binaxis='y', stackdir='center', stackratio= 0.8, dotsize = 0.5, position = position_dodge(0.9),alpha=.5)+
       ylab(labelme)+
       ggtitle(mytitle)+
       theme_minimal()+
       #scale_x_discrete(limits= rev(unique(sort(WBdata_nodup$type))))+
       theme(plot.title=element_text(hjust=.5))+
-        scale_fill_viridis(discrete=TRUE,end=.9) +
-        scale_color_viridis(discrete=TRUE,end=.9)+
+        scale_fill_viridis(discrete=TRUE,end=.85) +
+        scale_color_viridis(discrete=TRUE,end=.85)+
         scale_pattern_manual(values = c(Basal = "none", Starved = "stripe"))
   
 }
 
-#tiff(file="./plots/WB-ATG9A-exp_barplot_27Feb22.tiff",width=1500,height=2000,res=600)
+#tiff(file="./plots/WB-ATG9A-exp_barplot_v3_27Feb22.tiff",width=1800,height=1500,res=600)
 plotme(WBdata_nodup$AveATG9,WBdata_nodup$SDATG9, expression("relative ATG9A expression (a.u.)"),"ATG9A expression")
 #dev.off()
 

@@ -7,7 +7,7 @@ output: html_notebook
 Load data file
 *written for windows PC*
 ```{r}
-data=read.csv(file="C:/Users/natal/Documents/Vanderbilt/JG_ITC-data.csv", header=TRUE)
+data=read.csv(file="./csv/NSW4020-4022-4026_ATG9A-quant.csv", header=TRUE)
 ```
 
 
@@ -27,18 +27,26 @@ data$SDN<-sd(data$n)
 
 ```
 
-Calculating means and Standard deviation
+Calculating means and Standard deviation-ATG9A
 ```{r}
 
 data$AveATG9<-NA
-data$AveN<-NA
-data$SDKd<-NA
-data$SDN<-NA
+data$SDATG9<-NA
 
-data$AveKd<-mean(data$Kd)
-data$AveN<-mean(data$n)
+for (t in c("WT", "Control", "tepsin", "AP4E1")) {
+  data$AveATG9[which(data$Type==t)]<-sum(data$relWTATG9A[which(data$Type==t & data$relWTATG9A)])/length(which(data$Type==t & data$relWTATG9A))
+}
 
-data$SDKd<-sd(data$Kd)
-data$SDN<-sd(data$n)
+
+
+for (t in c("WT", "Control", "tepsin", "AP4E1")) {
+  data$SDATG9[which(data$Type==t)]<-sd(data$relWTATG9A[which(data$Type==t & data$relWTATG9A)])
+}
 
 ```
+
+Remove duplicate rows from replicates
+```{r}
+data_nodup<-data[!duplicated(data$AveATG9),]
+```
+
