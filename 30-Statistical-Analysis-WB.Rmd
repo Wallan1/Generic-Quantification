@@ -12,3 +12,16 @@ summary(anovaATG9A)
 TukeyHSD(anovaATG9A)
 
 ```
+
+
+
+*T-test*
+```{r}
+data$Rep<-as.factor(data$Rep)
+
+TtestLC3B<-t_test(data, relLC3B~Type)
+
+write.csv(TtestLC3B, file= "./stats/Relative-LC3B_Ttest_16Jan23.csv")
+
+
+```

@@ -35,3 +35,37 @@ plotme(WBdata_nodup$AveATG9,WBdata_nodup$SDATG9, expression("relative ATG9A expr
 
 
 ```
+
+
+*For two*
+```{r}
+data_nodup$Type<-factor(data_nodup$Type, levels=c("NoB4", "B4"))
+
+#library(ggplot2)
+# install.packages("remotes")
+#remotes::install_github("coolbutuseless/ggpattern")
+#library(ggpattern)
+#library(viridis)
+
+plotme<-function(yaxis,sd,labelme,mytitle){
+   ggplot(data_nodup,aes(x=Type,y=yaxis,fill=Type)) + 
+      geom_bar( width=.7, position = position_dodge(0.9),alpha=.75, stat = "identity", color = "black") + 
+        geom_errorbar(aes(x=Type,ymin=yaxis-sd,ymax=yaxis+sd),width=0.4,position = position_dodge(0.9),alpha=.9, colour="black", size=0.5)+
+      #geom_dotplot(binaxis='y', stackdir='center', stackratio= 0.8, dotsize = 0.5, position = position_dodge(0.9),alpha=.5)+
+      ylab(labelme)+
+      ggtitle(mytitle)+
+      theme_minimal()+
+      #scale_x_discrete(limits= rev(unique(sort(WBdata_nodup$type))))+
+      theme(plot.title=element_text(hjust=.5))+
+        scale_fill_grey(start= 0.05, end=.85) +
+        scale_color_grey(start=0.05,end=.85)
+        #scale_pattern_manual(values = c(NoB4 = "none", B4 = "stripe"))
+  
+}
+
+tiff(file="./plots/WB-B4-LC3B_PD_16Jan23.tiff",width=2500,height=2500,res=600)
+plotme(data_nodup$AveLC3B,data_nodup$SDLC3B, expression("relative densitometry (a.u.)"),"LC3B binding")
+dev.off()
+
+
+```

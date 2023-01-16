@@ -7,23 +7,26 @@ output: html_notebook
 Load data file
 *written for windows PC*
 ```{r}
-data=read.csv(file="./csv/NSW4020-4022-4026_ATG9A-quant.csv", header=TRUE)
+data=read.csv(file="./datasets/LC3-B4_PD_Jan2019/beta4_LC3B-PD-quant_16Jan23.csv", header=TRUE)
 ```
 
 
 Calculating means and Standard deviation
 ```{r}
 
-data$AveKd<-NA
-data$AveN<-NA
-data$SDKd<-NA
-data$SDN<-NA
+data$AveLC3B<-NA
 
-data$AveKd<-mean(data$Kd)
-data$AveN<-mean(data$n)
+data$SDLC3B<-NA
 
-data$SDKd<-sd(data$Kd)
-data$SDN<-sd(data$n)
+for (t in c("NoB4", "B4")) {
+  data$AveLC3B[which(data$Type==t)]<-sum(data$relLC3B[which(data$Type==t & data$relLC3B)])/length(which(data$Type==t & data$relLC3B))
+}
+
+
+
+for (t in c("NoB4", "B4")) {
+  data$SDLC3B[which(data$Type==t)]<-sd(data$relLC3B[which(data$Type==t & data$relLC3B)])
+}
 
 ```
 
@@ -47,6 +50,6 @@ for (t in c("WT", "Control", "tepsin", "AP4E1")) {
 
 Remove duplicate rows from replicates
 ```{r}
-data_nodup<-data[!duplicated(data$AveATG9),]
+data_nodup<-data[!duplicated(data$AveLC3B),]
 ```
 
